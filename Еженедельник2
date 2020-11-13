@@ -1,0 +1,201 @@
+package Test;
+import java.awt.BorderLayout;
+import javax.swing.*;
+
+
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.TextArea;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
+public class DialogTest {
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+EventQueue.invokeLater(new Runnable(){
+public void run() {
+	DialogFrame frame = new DialogFrame ();
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+
+	JTextArea area4 = new JTextArea( 1,1);
+	area4.setText("Не важно-не срочно");
+	area4.setLineWrap(true);
+	area4.setWrapStyleWord(true);
+	
+	
+	JPanel panel = new JPanel(); 
+	JLabel label = new JLabel("Enter Text");
+	JTextField tf = new JTextField(10); 
+	panel.add(label); 
+	panel.add(tf);
+	JTextArea ta = new JTextArea();
+	frame.getContentPane().add(BorderLayout.NORTH, panel);
+	frame.getContentPane().add(BorderLayout.SOUTH, tf);
+	
+
+	
+	frame.setVisible(true);}});
+}}
+class DialogFrame extends JFrame
+{
+	public DialogFrame()
+		{
+			setTitle("Еженедельник");
+				setSize(1920,1080);
+				JMenuBar menuBar = new JMenuBar();
+				setJMenuBar(menuBar);
+				JMenu fileMenu = new JMenu("Выбрать день недели");
+				menuBar.add(fileMenu);
+				JMenu fileMenu1 = new JMenu("Помощь");
+				menuBar.add(fileMenu1); 							// Добавление пунктов меню About,Add и Exit.
+
+				JMenuItem ponItem = new JMenuItem("Понедельник");
+				ponItem.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent event) {
+						if(dialog == null) 									// в первый раз
+							dialog = new AboutDialog();
+						dialog.setVisible(true); 							// отобразить диалог
+					}
+				});
+				fileMenu.add(ponItem);
+
+				JMenuItem vtorItem= new JMenuItem("Вторник");
+				vtorItem.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent event) {
+						if(dialog == null)
+							dialog = new AboutDialog();
+						dialog.setVisible(true);
+					}
+				});
+				fileMenu.add(vtorItem);
+
+				JMenuItem sreda= new JMenuItem("Среда");
+				sreda.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent event) {
+						if(dialog == null)
+							dialog = new AboutDialog();
+						dialog.setVisible(true);
+					}
+				});
+				fileMenu.add(sreda);
+
+				JMenuItem chetverg= new JMenuItem("Четверг");
+				chetverg.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent event) {
+						if(dialog == null)
+							dialog = new AboutDialog();
+						dialog.setVisible(true);
+					}
+				});
+				fileMenu.add(chetverg);
+
+				JMenuItem pytnica= new JMenuItem("Пятница");
+				pytnica.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent event) {
+						if(dialog == null)
+						dialog = new AboutDialog();
+						dialog.setVisible(true);
+					}
+				});
+				fileMenu.add(pytnica);
+
+				JMenuItem subbota= new JMenuItem("Суббота");
+				subbota.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent event) {
+						if(dialog == null)
+							dialog = new AboutDialog();
+						dialog.setVisible(true);
+					}
+				});
+				fileMenu.add(subbota);
+				
+				JMenuItem voskresene= new JMenuItem("Воскресенье");
+				voskresene.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent event) {
+						if(dialog == null)
+							dialog = new AboutDialog();
+						dialog.setVisible(true);
+					}
+
+				});
+				fileMenu.add(voskresene);
+				
+				JMenuItem exitItem = new JMenuItem("Exit");						// При активации пункта Exit программа завершается.
+				exitItem.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent event) {
+						System.exit(0);
+					}
+				});
+				fileMenu1.add(exitItem);
+		}
+
+	
+	private AboutDialog dialog;
+	}
+
+class AboutDialog extends JDialog
+	{
+	public AboutDialog()
+		{
+		JLabel label1 = new JLabel("Важные срочные");
+        JTextField tf1 = new JTextField(10);
+        JTextArea area1 = new JTextArea(30,85);
+		area1.setText("Важно-срочно");
+		area1.setLineWrap(true);
+		area1.setWrapStyleWord(true);
+		
+		JLabel label2 = new JLabel("2");
+        JTextField tf2 = new JTextField(10);
+        JTextArea area2 = new JTextArea(30, 85);
+		area2.setText("Важно-не срочно");
+		area2.setLineWrap(true);
+		area2.setWrapStyleWord(true);
+
+		JLabel label3 = new JLabel("3");
+        JTextField tf3 = new JTextField(10);
+		JTextArea area3 = new JTextArea(30, 85);
+		area3.setText("Не важно-срочно");
+		area3.setLineWrap(true);
+		area3.setWrapStyleWord(true);
+
+		JLabel label4 = new JLabel("4");
+        JTextField tf4 = new JTextField(10);
+		JTextArea area4 = new JTextArea(30, 85);
+		area4.setText("Не важно-не срочно");
+		area4.setLineWrap(true);
+		area4.setWrapStyleWord(true);
+		
+	
+
+		JPanel contents = new JPanel();
+		contents.add(new JScrollPane(area1));
+		contents.add(new JScrollPane(area2));
+		contents.add(new JScrollPane(area3));
+		contents.add(new JScrollPane(area4));
+		setContentPane(contents);
+		
+		
+		contents.add( label1);
+		//contents.add(label2,BorderLayout.NORTH);
+		//contents.add(label3,BorderLayout.WEST);
+		//contents.add(label4,BorderLayout.CENTER);
+		setSize(1920, 1080);
+		setVisible(true);
+		}
+public void actionPerformed(ActionEvent event)
+{
+	setVisible(false);
+};
+}
